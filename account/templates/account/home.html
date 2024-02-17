@@ -1,0 +1,21 @@
+{% extends "Chatapp/base.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="row justify-content-center mt-7 " style=" margin: auto; width: 80%; height:60">
+        <div class="col-md-7 text-center" >
+            {% comment %} rgb(1, 1, 32) {% endcomment %}
+            <h1 style="color:indigo; font-size:3rem; font-weight:bold; text-shadow:4px 4px 6px #829096; margin-top:4rem;">Connect, Communicate, Create Memories – Your Chat Hub is Here!</h1>
+            <br>
+            <p style="color:purple; font-size:1.2rem; font-weight:bold; margin-bottom:3rem;">Welcome to ChatsApp, where communication meets innovation. My chat application is more than just a messaging platform; it's a gateway to seamless and meaningful connections. Break free from communication boundaries and dive into a world of instant messaging, real-time updates, and vibrant communities. Whether you're connecting with friends, family, or colleagues, ChatsApp provides a secure and dynamic space for all your conversations. </p>
+            <a role="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" style=" font-size:1.5rem; margin-top:2rem;" href="{% url 'index' %}">Start</a>
+        </div>
+    </div>
+
+{% endblock %}
