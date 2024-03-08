@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Chatapp',
+    'account',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Chatapp',
-    'account',
+    'send_mail',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -136,3 +139,23 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
+
+CELERY_RESULT_BACKEND = 'django-db'
+
+# Celery beat
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# smtp
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
